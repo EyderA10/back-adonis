@@ -48,6 +48,21 @@ jobs:
          working-directory: build
   
       - name: exec migrations
+        env:
+            PORT: ${{ secrets.PORT }}
+            HOST: ${{ secrets.HOST }}
+            NODE_ENV: ${{ secrets.NODE_ENV }}
+            APP_KEY: ${{ secrets.APP_KEY }}
+            DRIVE_DISK: ${{ secrets.DRIVE_DISK }}
+            DB_CONNECTION: ${{ secrets.DB_CONNECTION }}
+            PG_HOST: ${{ secrets.PG_HOST }}
+            PG_PORT: ${{ secrets.PG_PORT }}
+            PG_USER: ${{ secrets.PG_USER }}
+            PG_PASSWORD: ${{ secrets.PG_PASSWORD }}
+            PG_DB_NAME: ${{ secrets.PG_DB_NAME }}
+            MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+            MAILGUN_DOMAIN: ${{ secrets.MAILGUN_DOMAIN }}
+            CACHE_VIEWS: ${{ secrets.CACHE_VIEWS }}
         run: node ace migration:run
         working-directory: build
 
