@@ -25,7 +25,10 @@ jobs:
         run: |
           npm install --force
           npm run build --if-present
-
+          cd build
+          npm ci --production
+          node server.js
+  
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
